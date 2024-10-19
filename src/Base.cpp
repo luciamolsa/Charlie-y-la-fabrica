@@ -13,6 +13,7 @@ Base::Base(){
     _velocity = 4;
     _base.setOrigin(_base.getGlobalBounds().width/2,0);
 
+
 }
 
 void Base::update(){
