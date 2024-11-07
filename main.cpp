@@ -5,6 +5,8 @@
 #include "Ladrillo.h"
 #include "Puntaje.h"
 #include "Menu.h"
+#include "Bonus.h"
+#include "BonusVida.h"
 #include <vector>
 
 void gameover();
@@ -110,6 +112,12 @@ int main()
 				Pelota p;
 				Base b;
 				Ladrillo l[81];
+
+				BonusVida bonusvida;
+
+				Bonus bonus;
+
+
 				int ladrillos = 81;
 				for (int i=0; i<ladrillos; i++){
 					l[i].Posicion(i+1);
@@ -176,6 +184,41 @@ int main()
 							p.rebote();
 
 						}
+						///CUANO SE ROMPA CIERTA CANTIDAD DE LADRILLOS CAIGA.
+                  if (ladrillos_rotos % 5 == 0 && ladrillos_rotos > 0) {
+               bonus.activar();
+               }
+
+                  bonus.update();
+
+                  if (bonus.aparece()) {
+    if (bonus.getBounds().top > 600) {
+        bonus.reseteoPosicion();
+    }}
+
+    if (ladrillos_rotos == ladrillos){
+      bonus.reseteoPosicion();
+    }
+
+   /* ///OTRO BONUS VIDA
+         if (ladrillos_rotos <75){
+            bonusvida.activar();
+         }
+         bonusvida.update();
+          if (bonusvida.aparece()) {
+    if (bonusvida.getBounds().top > 600) {
+        bonusvida.reseteoPosicion();
+    }}
+        if (ladrillos_rotos == ladrillos){
+      bonusvida.reseteoPosicion();
+    }
+    if (b.isCollision(bonusvida)){
+      vida++;
+    }*/
+
+///ERROR
+
+
 
 						if(p.update() == false && vida > 1){
 							vida--;
@@ -244,6 +287,7 @@ int main()
 					window_play.draw(image);
 					window_play.draw(p);
 					window_play.draw(b);
+					window_play.draw(bonus);
 					for(int i=0; i<ladrillos; i++){
 						window_play.draw(l[i]);
 					}
