@@ -49,7 +49,7 @@ sf::FloatRect Base:: getBounds()const{
 
 }
 
-void Base::aumentarVelocidad(int n){
+void Base::increaseSpeed(int n){
 	n=4+n*0.2;
 	_velocity=n;
 }

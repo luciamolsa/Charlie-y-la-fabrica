@@ -15,7 +15,7 @@ class Base: public sf:: Drawable, public Collisionable
         void respawn();
         void draw(sf::RenderTarget& target,sf::RenderStates states)const override;
         sf::FloatRect getBounds()const override;
-        void aumentarVelocidad(int);
+        void increaseSpeed(int);
 		float getVelocity();
 
     private:

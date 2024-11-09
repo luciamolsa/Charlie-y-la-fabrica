@@ -10,11 +10,8 @@ public:
 	bool leerDeDisco();
 	void setPuntaje(int);
 	int getPuntaje();
-	//void setNombre(const char *n);
-	//char getNombre();
 private:
 	int puntajeMax;
-	//char nombre;
 };
 
 #endif // PUNTAJE_H

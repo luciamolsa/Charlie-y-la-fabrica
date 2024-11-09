@@ -28,7 +28,7 @@ int main()
 		musica.setLoop(true);
 		musica.play();
 
-		Menu m;
+		Menu menu;
 		int page_number;
 
 		//Game Loop
@@ -47,16 +47,16 @@ int main()
 				if (event.type == sf::Event::KeyReleased){
 
 					if (event.key.code == sf::Keyboard::Up) {
-						m.moveUp();
+						menu.moveUp();
 						break;
 					}
 					if (event.key.code == sf::Keyboard::Down) {
-						m.moveDown();
+						menu.moveDown();
 						break;
 					}
 					// elegir opcion
 					if (event.key.code == sf::Keyboard::Return) { // enter
-						int x = m.mainMenuPressed();
+						int x = menu.mainMenuPressed();
 
 						switch (x){
 						case 0:
@@ -82,7 +82,7 @@ int main()
 
 			window.clear();
 			window.draw(imag);
-			m.draw(window);
+			menu.draw(window);
 			window.display();
 
 		}
@@ -107,12 +107,12 @@ int main()
 				puntMax.setPosition(810,65);
 				level.setPosition(810, 315);
 
-				Pelota p;
-				Base b;
-				Ladrillo l[81];
+				Pelota pelota;
+				Base base;
+				Ladrillo ladrillo[81];
 				int ladrillos = 81;
 				for (int i=0; i<ladrillos; i++){
-					l[i].Posicion(i+1);
+					ladrillo[i].position(i+1);
 				}
 				Puntaje pmax;
 
@@ -157,36 +157,35 @@ int main()
 
 					if(comienzo){
 						//p.cmd();
-						p.update();
-						b.update();
+						pelota.update();
+						base.update();
 
 
 
 						for (int i = 0; i < ladrillos; i++){
-							if(p.isCollision(l[i])){
-								l[i].roto();
-								l[i].desaparece();
-								p.rebote();
+							if(pelota.isCollision(ladrillo[i])){
+								ladrillo[i].broke();
+								ladrillo[i].desapear();
+								pelota.bounce();
 								puntos++;
 								ladrillos_rotos++;
 							}
 						}
 
-						if(p.isCollision(b)){
-							p.rebote();
-
+						if(pelota.isCollision(base)){
+							pelota.bounce();
 						}
 
-						if(p.update() == false && vida > 1){
+						if(pelota.update() == false && vida > 1){
 							vida--;
 							canal.play();
-							p.respawn();
-							b.respawn();
+							pelota.respawn();
+							base.respawn();
 							comienzo = false;
 						}
 
-						if(p.update() == false && vida == 1){
-							vida=0;
+						if(pelota.update() == false && vida == 1){
+							vida = 0;
 							pmax.leerDeDisco();
 							if (puntos > pmax.getPuntaje()){
 								pmax.setPuntaje(puntos);
@@ -203,26 +202,26 @@ int main()
 							canal2.play();
 
 							nivel++;
-							p.aumentarVelocidad(nivel);
-							b.aumentarVelocidad(nivel);
+							pelota.increaseSpeed(nivel);
+							base.increaseSpeed(nivel);
 							puntos += 10;
 							vida = 3; // se restauran las 3 vidas
-							p.respawn();
-							b.respawn();
-							comienzo=false;
-							ladrillos_rotos=0;
+							pelota.respawn();
+							base.respawn();
+							comienzo = false;
+							ladrillos_rotos = 0;
 
 
 							for (int i = 0; i < ladrillos; i++){
-								l[i].Posicion(i+1); // vuelven a armarse la pared
+								ladrillo[i].position(i+1); // vuelven a armarse la pared
 							}
 
 						}
 					}
 					else{
 						// pelota y base en el medio. Se mueven juntas
-						p.Base(b.getVelocity());
-						b.update();
+						pelota.Base(base.getVelocity());
+						base.update();
 					}
 
 					pmax.leerDeDisco();
@@ -232,20 +231,12 @@ int main()
 					puntMax.setString(" Puntaje Maximo:  "+ std::to_string(nivel));
 					level.setString("  Nivel:   "+ std::to_string(pmax.getPuntaje()));
 
-					//b.cmd();
-					//l.cmd();
-					//l.update();
-
-					/*for(int i=0; i<ladrillos; i++){
-						l[i].update();
-					}*/
-
 					window_play.clear();
 					window_play.draw(image);
-					window_play.draw(p);
-					window_play.draw(b);
-					for(int i=0; i<ladrillos; i++){
-						window_play.draw(l[i]);
+					window_play.draw(pelota);
+					window_play.draw(base);
+					for(int i = 0; i < ladrillos; i++) {
+						window_play.draw(ladrillo[i]);
 					}
 					window_play.draw(puntaje);
 					window_play.draw(vidas);
@@ -255,7 +246,7 @@ int main()
 
 					if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 						pmax.leerDeDisco();
-						if (puntos>pmax.getPuntaje()){
+						if (puntos > pmax.getPuntaje()){
 							pmax.setPuntaje(puntos);
 							pmax.grabarEnDisco();
 						}

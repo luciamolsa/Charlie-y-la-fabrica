@@ -6,8 +6,6 @@
 Puntaje::Puntaje()
 {
 	puntajeMax = 0;
-	//const char n[10] = "---";
-	//strcpy(nombre, n);
 }
 
 
@@ -36,11 +34,3 @@ void Puntaje::setPuntaje(int p){
 int Puntaje::getPuntaje(){
 	return puntajeMax;
 }
-
-/*void Puntaje::setNombre(const char *n){
-	strcpy(nombre, n);
-}
-
-char Puntaje::getNombre(){
-	return *nombre;
-} */
