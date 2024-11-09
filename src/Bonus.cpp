@@ -9,7 +9,7 @@ Bonus::Bonus() : _aparece(false) {
     _sprite.setOrigin(_sprite.getGlobalBounds().width / 2, _sprite.getGlobalBounds().height / 2);
 
     srand(static_cast<unsigned>(time(0)));
-    reseteoPosicion();
+    resetPosition();
 }
 
 void Bonus::activar() {
@@ -22,12 +22,12 @@ void Bonus::update() {
 
         if (_sprite.getPosition().y > 600) {
             _aparece = false;
-            reseteoPosicion();
+            resetPosition();
         }
     }
 }
 
-void Bonus::reseteoPosicion() {
+void Bonus::resetPosition() {
     float x = static_cast<float>(rand() % 600);
     _sprite.setPosition(x, 0);
 }

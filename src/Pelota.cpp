@@ -43,7 +43,7 @@ bool Pelota::update(){
     return true;
 
 }
-void Pelota::rebote(){
+void Pelota::bounce(){
 
     _velocity.y = -_velocity.y;
     _sound.play();
@@ -87,7 +87,7 @@ void Pelota::Base(float v){
     }
 }
 
-void Pelota::aumentarVelocidad(int n){
+void Pelota::increaseSpeed(int n){
 	n=n*0.7;
 	_velocity={n,n};
 }

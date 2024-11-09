@@ -8014,11 +8014,11 @@
 	<cstdlib>
 	<ctime>
 
-1731186955 source:c:\users\asus\desktop\charlie y la fabrica\src\base.cpp
+1731187461 source:c:\users\asus\desktop\charlie y la fabrica\src\base.cpp
 	<iostream>
 	"Base.h"
 
-1731186955 c:\users\asus\desktop\charlie y la fabrica\include\base.h
+1731187461 c:\users\asus\desktop\charlie y la fabrica\include\base.h
 	<SFML\Graphics.hpp>
 	"Collisionable.h"
 
@@ -8388,13 +8388,13 @@
 1645585198 c:\users\asus\desktop\charlie y la fabrica\include\collisionable.h
 	<SFML\Graphics.hpp>
 
-1731186955 source:c:\users\asus\desktop\charlie y la fabrica\src\bonus.cpp
+1731187621 source:c:\users\asus\desktop\charlie y la fabrica\src\bonus.cpp
 	"Bonus.h"
 	<iostream>
 	<cstdlib>
 	<ctime>
 
-1731186955 c:\users\asus\desktop\charlie y la fabrica\include\bonus.h
+1731187687 c:\users\asus\desktop\charlie y la fabrica\include\bonus.h
 	<SFML\Graphics.hpp>
 	<SFML\Audio.hpp>
 	"Collisionable.h"
@@ -8518,27 +8518,27 @@
 	<iostream>
 	"Collisionable.h"
 
-1731186955 source:c:\users\asus\desktop\charlie y la fabrica\src\ladrillo.cpp
+1731187621 source:c:\users\asus\desktop\charlie y la fabrica\src\ladrillo.cpp
 	<iostream>
 	"Ladrillo.h"
 
-1731186955 c:\users\asus\desktop\charlie y la fabrica\include\ladrillo.h
+1731187621 c:\users\asus\desktop\charlie y la fabrica\include\ladrillo.h
 	<SFML\Graphics.hpp>
 	<SFML\Audio.hpp>
 	"Collisionable.h"
 	<list>
 
-1731186955 source:c:\users\asus\desktop\charlie y la fabrica\src\menu.cpp
+1731187461 source:c:\users\asus\desktop\charlie y la fabrica\src\menu.cpp
 	"Menu.h"
 
-1731186955 c:\users\asus\desktop\charlie y la fabrica\include\menu.h
+1731187461 c:\users\asus\desktop\charlie y la fabrica\include\menu.h
 	<SFML/Graphics.hpp>
 
-1731186955 source:c:\users\asus\desktop\charlie y la fabrica\src\pelota.cpp
+1731187461 source:c:\users\asus\desktop\charlie y la fabrica\src\pelota.cpp
 	<iostream>
 	"Pelota.h"
 
-1731186955 c:\users\asus\desktop\charlie y la fabrica\include\pelota.h
+1731187461 c:\users\asus\desktop\charlie y la fabrica\include\pelota.h
 	<SFML\Graphics.hpp>
 	<SFML\Audio.hpp>
 	"Collisionable.h"
@@ -8549,4 +8549,16 @@
 	<cstring>
 
 1731186955 c:\users\asus\desktop\charlie y la fabrica\include\puntaje.h
+
+1731187133 source:c:\users\asus\desktop\charlie y la fabrica\main.cpp
+	<SFML/Graphics.hpp>
+	<SFML\Audio.hpp>
+	"Pelota.h"
+	"Base.h"
+	"Ladrillo.h"
+	"Puntaje.h"
+	"Menu.h"
+	"Bonus.h"
+	"BonusVida.h"
+	<vector>
 

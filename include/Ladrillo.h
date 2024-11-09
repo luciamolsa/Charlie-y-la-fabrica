@@ -9,13 +9,11 @@ class Ladrillo : public sf:: Drawable, public Collisionable
 {
     public:
         Ladrillo();
-        //void cmd();
-        //void update();
         void draw(sf::RenderTarget& target,sf::RenderStates states)const override;
         sf::FloatRect getBounds()const override;
         void roto();
-        void Posicion(int);
-        void desaparece();
+        void position(int);
+        void desapear();
 
 
     protected:

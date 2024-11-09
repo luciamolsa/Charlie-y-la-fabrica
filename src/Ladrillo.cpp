@@ -33,7 +33,7 @@ void Ladrillo::roto(){
     ladrillo_roto=true;
 }
 
-void Ladrillo::Posicion(int i){
+void Ladrillo::position(int i){
 	if (i<=9){
 		_ladrillo.setPosition(i*80-40, 30);
 	}
@@ -63,7 +63,7 @@ void Ladrillo::Posicion(int i){
 	}
 }
 
-void Ladrillo::desaparece(){ // no desaparecen sino que se dibujan fuera de la pantalla
+void Ladrillo::desapear(){ // no desaparecen sino que se dibujan fuera de la pantalla
 	_ladrillo.setPosition(-1500, -1500);
 }
 
