@@ -7412,7 +7412,10 @@
 	"stdio.h"
 	<cstring>
 
+<<<<<<< Updated upstream
 1731014078 source:c:\users\gusta\desktop\juego lucia 1\charlie-y-la-fabrica\main.cpp
+=======
+>>>>>>> Stashed changes
 	<SFML/Graphics.hpp>
 	<SFML\Audio.hpp>
 	"Pelota.h"
@@ -7420,11 +7423,13 @@
 	"Ladrillo.h"
 	"Puntaje.h"
 	"Menu.h"
+<<<<<<< Updated upstream
 	"Bonus.h"
 	"BonusVida.h"
 	<vector>
 
 1731013546 c:\users\gusta\desktop\juego lucia 1\charlie-y-la-fabrica\sfml\include\sfml\graphics.hpp
+1525812018 c:\users\asus\desktop\charlie y la fabrica\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
 	<SFML/Graphics/BlendMode.hpp>
 	<SFML/Graphics/CircleShape.hpp>
@@ -7454,6 +7459,7 @@
 	<SFML/Graphics/View.hpp>
 
 1731013546 c:\users\gusta\desktop\juego lucia 1\charlie-y-la-fabrica\sfml\include\sfml\window.hpp
+1525812018 c:\users\asus\desktop\charlie y la fabrica\sfml\include\sfml\window.hpp
 	<SFML/System.hpp>
 	<SFML/Window/Clipboard.hpp>
 	<SFML/Window/Context.hpp>
@@ -7471,6 +7477,8 @@
 	<SFML/Window/WindowStyle.hpp>
 
 1731013546 c:\users\gusta\desktop\juego lucia 1\charlie-y-la-fabrica\sfml\include\sfml\system.hpp
+=======
+>>>>>>> Stashed changes
 	<SFML/Config.hpp>
 	<SFML/System/Clock.hpp>
 	<SFML/System/Err.hpp>
@@ -7490,6 +7498,7 @@
 	<SFML/System/Vector2.hpp>
 	<SFML/System/Vector3.hpp>
 
+<<<<<<< Updated upstream
 1731013546 c:\users\gusta\desktop\juego lucia 1\charlie-y-la-fabrica\sfml\include\sfml\config.hpp
 	"TargetConditionals.h"
 
@@ -7515,6 +7524,7 @@
 	<cstdio>
 	<string>
 
+<<<<<<< Updated upstream
 1731013546 c:\users\gusta\desktop\juego lucia 1\charlie-y-la-fabrica\sfml\include\sfml\system\inputstream.hpp
 	<SFML/Config.hpp>
 	<SFML/System/Export.hpp>
@@ -7718,6 +7728,7 @@
 	<SFML/Graphics/Color.hpp>
 	<SFML/System/Vector2.hpp>
 
+<<<<<<< Updated upstream
 1731013546 c:\users\gusta\desktop\juego lucia 1\charlie-y-la-fabrica\sfml\include\sfml\graphics\color.hpp
 	<SFML/Graphics/Export.hpp>
 
