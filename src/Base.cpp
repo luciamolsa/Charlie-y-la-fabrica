@@ -11,6 +11,7 @@ Base::Base(){
     _base.setTexture(_texture);
     _base.setPosition(360,550);
     _velocity = 4;
+    _base.setOrigin(_base.getGlobalBounds().width/2,0);
 }
 
 void Base::update(){
