@@ -185,20 +185,21 @@ int main()
 
 						}
 						///CUANO SE ROMPA CIERTA CANTIDAD DE LADRILLOS CAIGA.
-                  if (ladrillos_rotos % 5 == 0 && ladrillos_rotos > 0) {
-               bonus.activar();
-               }
+                        if (ladrillos_rotos % 5 == 0 && ladrillos_rotos > 0) {
+                            bonus.activar();
+                        }
 
-                  bonus.update();
+                        bonus.update();
 
-                  if (bonus.aparece()) {
-    if (bonus.getBounds().top > 600) {
-        bonus.reseteoPosicion();
-    }}
+                        if (bonus.aparece()) {
+                            if (bonus.getBounds().top > 600) {
+                                bonus.reseteoPosicion();
+                            }
+                        }
 
-    if (ladrillos_rotos == ladrillos){
-      bonus.reseteoPosicion();
-    }
+                        if (ladrillos_rotos == ladrillos){
+                            bonus.reseteoPosicion();
+                        }
 
    /* ///OTRO BONUS VIDA
          if (ladrillos_rotos <75){
@@ -217,8 +218,6 @@ int main()
     }*/
 
 ///ERROR
-
-
 
 						if(p.update() == false && vida > 1){
 							vida--;
