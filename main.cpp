@@ -47,16 +47,16 @@ int main()
 				if (event.type == sf::Event::KeyReleased){
 
 					if (event.key.code == sf::Keyboard::Up) {
-						m.MoveUp();
+						m.moveUp();
 						break;
 					}
 					if (event.key.code == sf::Keyboard::Down) {
-						m.MoveDown();
+						m.moveDown();
 						break;
 					}
 					// elegir opcion
 					if (event.key.code == sf::Keyboard::Return) { // enter
-						int x = m.MainMenuPressed();
+						int x = m.mainMenuPressed();
 
 						switch (x){
 						case 0:
@@ -82,7 +82,7 @@ int main()
 
 			window.clear();
 			window.draw(imag);
-			m.Draw(window);
+			m.draw(window);
 			window.display();
 
 		}

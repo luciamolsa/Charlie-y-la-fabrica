@@ -7,16 +7,15 @@ class Menu
 {
 	public:
 		Menu();
-		void Draw(sf::RenderWindow &window);
-		void MoveUp();
-		void MoveDown();
-		int MainMenuPressed(){return MainMenuSelected;}
+		void draw(sf::RenderWindow &window);
+		void moveUp();
+		void moveDown();
+		int mainMenuPressed(){return mainMenuSelected;}
 
 	private:
-		int MainMenuSelected;
+		int mainMenuSelected;
 		sf::Font font;
 		sf::Text mainMenu[Max_main_menu];
-		//sf::Sprite image;
 		sf::Texture tex;
 
 };

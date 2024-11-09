@@ -26,33 +26,33 @@ Menu::Menu()
 	mainMenu[2].setCharacterSize(50);
 	mainMenu[2].setPosition(120, 240);
 
-	MainMenuSelected = 0;
+	mainMenuSelected = 0;
 }
 
-void Menu::Draw(sf::RenderWindow &window){
+void Menu::draw(sf::RenderWindow &window){
 	for (int i=0; i<3; i++){
 		window.draw(mainMenu[i]);
 	}
 }
 
-void Menu::MoveDown(){
-	if (MainMenuSelected + 1 <= Max_main_menu) { // chequea que no sea el ultimo item (salir)
-		mainMenu[MainMenuSelected].setColor(sf::Color::Black); // cambia color del anterior
+void Menu::moveDown(){
+	if (mainMenuSelected + 1 <= Max_main_menu) { // chequea que no sea el ultimo item (salir)
+		mainMenu[mainMenuSelected].setColor(sf::Color::Black); // cambia color del anterior
 
-		MainMenuSelected++; //se mueve al item de abajo
-		if (MainMenuSelected == 3) MainMenuSelected = 0;
+		mainMenuSelected++; //se mueve al item de abajo
+		if (mainMenuSelected == 3) mainMenuSelected = 0;
 
-		mainMenu[MainMenuSelected].setColor(sf::Color::Blue); // cambia el color del que se elige
+		mainMenu[mainMenuSelected].setColor(sf::Color::Blue); // cambia el color del que se elige
 	}
 }
 
-void Menu::MoveUp(){
-	if (MainMenuSelected - 1 >= -1) { // chequea que no sea el primer item (jugar)
-		mainMenu[MainMenuSelected].setColor(sf::Color::Black); // cambia color del anterior
+void Menu::moveUp(){
+	if (mainMenuSelected - 1 >= -1) { // chequea que no sea el primer item (jugar)
+		mainMenu[mainMenuSelected].setColor(sf::Color::Black); // cambia color del anterior
 
-		MainMenuSelected--; //se mueve al item de arriba
-		if (MainMenuSelected == -1) MainMenuSelected = 2;
+		mainMenuSelected--; //se mueve al item de arriba
+		if (mainMenuSelected == -1) mainMenuSelected = 2;
 
-		mainMenu[MainMenuSelected].setColor(sf::Color::Blue); // cambia el color del que se elige
+		mainMenu[mainMenuSelected].setColor(sf::Color::Blue); // cambia el color del que se elige
 	}
 }
