@@ -8532,7 +8532,7 @@
 1731187461 c:\users\asus\desktop\charlie y la fabrica\include\menu.h
 	<SFML/Graphics.hpp>
 
-1731293960 source:c:\users\asus\desktop\charlie y la fabrica\src\pelota.cpp
+1731295346 source:c:\users\asus\desktop\charlie y la fabrica\src\pelota.cpp
 	<iostream>
 	"Pelota.h"
 
@@ -8562,7 +8562,7 @@
 	<iostream>
 	"Ladrillo.h"
 
-1731290728 source:c:\users\asus\desktop\charlie y la fabrica\main.cpp
+1731299152 source:c:\users\asus\desktop\charlie y la fabrica\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML\Audio.hpp>
 	"Pelota.h"

@@ -109,7 +109,9 @@ int main()
 				puntMax.setPosition(810,65);
 				level.setPosition(810, 315);
 
-				Pelota pelota;
+				std::vector<Pelota> pelota;
+                Pelota p;
+                pelota.push_back(p);
 				Base base;
 				Ladrillo ladrillo[81];
 				BonusVida bonusvida;
@@ -160,22 +162,22 @@ int main()
 					}
 
 					if(comienzo){
-						pelota.update();
+						pelota[0].update();
 						base.update();
 						bonus.update();
 
 						for (int i = 0; i < ladrillos; i++){
-							if(pelota.isCollision(ladrillo[i])){
+							if(pelota[0].isCollision(ladrillo[i])){
 								ladrillo[i].roto();
 								ladrillo[i].disapear();
-								pelota.bounce();
+								pelota[0].bounce();
 								puntos++;
 								ladrillos_rotos++;
 							}
 						}
 
-						if(pelota.isCollision(base)){
-							pelota.bounce();
+						if(pelota[0].isCollision(base)){
+							pelota[0].bounce();
 						}
 						///CUANDO SE ROMPA CIERTA CANTIDAD DE LADRILLOS CAIGA.
                         if (ladrillos_rotos % 5 == 0 && ladrillos_rotos > 0 ||
@@ -184,7 +186,7 @@ int main()
                         }
 
                         if(bonus.isCollision(base)){
-                            pelota.increaseSpeed(3);
+                            pelota[0].increaseSpeed(3);
                             puntos++;
                         }
 
@@ -198,16 +200,16 @@ int main()
                             bonus.resetPosition();
                         }
 
-						if(pelota.update() == false && vida > 1){
+						if(pelota[0].update() == false && vida > 1){
 							vida--;
 							canal.play();
-							pelota.respawn();
+							pelota[0].respawn();
 							base.respawn();
 							comienzo = false;
-							pelota.increaseSpeed(2);
+							pelota[0].increaseSpeed(2);
 						}
 
-						if(pelota.update() == false && vida == 1){
+						if(pelota[0].update() == false && vida == 1){
 							vida = 0;
 							pmax.leerDeDisco();
 							if (puntos > pmax.getPuntaje()){
@@ -225,11 +227,11 @@ int main()
 							canal2.play();
 
 							nivel++;
-							pelota.increaseSpeed(nivel);
+							pelota[0].increaseSpeed(nivel);
 							base.increaseSpeed(nivel);
 							puntos += 10;
 							vida = 3; // se restauran las 3 vidas
-							pelota.respawn();
+							pelota[0].respawn();
 							base.respawn();
 							comienzo = false;
 							ladrillos_rotos = 0;
@@ -242,7 +244,7 @@ int main()
 					}
 					else{
 						// pelota y base en el medio. Se mueven juntas
-						pelota.Base(base.getVelocity());
+						pelota[0].Base(base.getVelocity());
 						base.update();
 					}
 
@@ -255,7 +257,7 @@ int main()
 
 					window_play.clear();
 					window_play.draw(image);
-					window_play.draw(pelota);
+					window_play.draw(pelota[0]);
 					window_play.draw(base);
 					window_play.draw(bonus);
 					for(int i = 0; i < ladrillos; i++){
