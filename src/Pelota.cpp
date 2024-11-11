@@ -9,7 +9,7 @@ Pelota::Pelota(){
     _sprite.setTexture(_texture);
     _sprite.setPosition(350,530);
 
-    _velocity={1,1};
+    _velocity = {1,1};
 
     _buffer.loadFromFile("Rebote.wav");
     _sound.setBuffer(_buffer);
@@ -55,9 +55,6 @@ void Pelota::respawn(){
 
 }
 
-//void Pelota::cmd(){}
-
-
 void Pelota::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 
     target.draw(_sprite, states);
@@ -88,10 +85,15 @@ void Pelota::Base(float v){
 }
 
 void Pelota::increaseSpeed(int n){
-	n=n*0.7;
-	_velocity={n,n};
+	n = n*0.7;
+	_velocity = {n,n};
 }
 
+void Pelota::multiply() {
+
+    _velocity.y = -_velocity.y;
+    _sound.play(); // Sonido al crear pelotas
+}
 
 Pelota::~Pelota()
 {

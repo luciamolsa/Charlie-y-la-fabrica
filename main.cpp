@@ -112,9 +112,7 @@ int main()
 				Pelota pelota;
 				Base base;
 				Ladrillo ladrillo[81];
-
 				BonusVida bonusvida;
-
 				Bonus bonus;
 
 
@@ -167,8 +165,6 @@ int main()
 						pelota.update();
 						base.update();
 
-
-
 						for (int i = 0; i < ladrillos; i++){
 							if(pelota.isCollision(ladrillo[i])){
 								ladrillo[i].roto();
@@ -181,14 +177,15 @@ int main()
 
 						if(pelota.isCollision(base)){
 							pelota.bounce();
-
 						}
 						///CUANO SE ROMPA CIERTA CANTIDAD DE LADRILLOS CAIGA.
                         if (ladrillos_rotos % 5 == 0 && ladrillos_rotos > 0) {
                             bonus.activar();
                         }
-
                         bonus.update();
+                        if(base.isCollision(bonus)){
+                            pelota.multiply();
+                        }
 
                         if (bonus.aparece()) {
                             if (bonus.getBounds().top > 600) {

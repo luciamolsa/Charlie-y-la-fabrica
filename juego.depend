@@ -8534,11 +8534,11 @@
 1731187461 c:\users\asus\desktop\charlie y la fabrica\include\menu.h
 	<SFML/Graphics.hpp>
 
-1731187461 source:c:\users\asus\desktop\charlie y la fabrica\src\pelota.cpp
+1731283310 source:c:\users\asus\desktop\charlie y la fabrica\src\pelota.cpp
 	<iostream>
 	"Pelota.h"
 
-1731187461 c:\users\asus\desktop\charlie y la fabrica\include\pelota.h
+1731190152 c:\users\asus\desktop\charlie y la fabrica\include\pelota.h
 	<SFML\Graphics.hpp>
 	<SFML\Audio.hpp>
 	"Collisionable.h"
@@ -8550,7 +8550,7 @@
 
 1731186955 c:\users\asus\desktop\charlie y la fabrica\include\puntaje.h
 
-1731187133 source:c:\users\asus\desktop\charlie y la fabrica\main.cpp
+1731189870 source:c:\users\asus\desktop\charlie y la fabrica\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML\Audio.hpp>
 	"Pelota.h"

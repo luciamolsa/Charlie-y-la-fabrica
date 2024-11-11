@@ -11,7 +11,6 @@ class Pelota: public sf:: Drawable, public Collisionable
 public:
 	Pelota();
 	virtual ~Pelota();
-	//void cmd();
 	bool update();
 	void bounce();
 	void respawn();
@@ -19,6 +18,7 @@ public:
 	sf::FloatRect getBounds() const override;
 	void Base(float);
 	void increaseSpeed(int);
+	void multiply();
 
 private:
 
@@ -27,7 +27,6 @@ private:
 	sf::Vector2f _velocity;
 	sf::Sound _sound;
 	sf::SoundBuffer _buffer;
-
 };
 
 #endif // PELOTA_H

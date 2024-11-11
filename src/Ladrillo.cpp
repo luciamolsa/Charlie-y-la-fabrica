@@ -12,17 +12,9 @@ Ladrillo::Ladrillo()
 
 }
 
-/*oid Ladrillo::cmd(){
-
-}*/
-
 void Ladrillo::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 	target.draw(_ladrillo, states);
 }
-
-/*void Ladrillo::update(){
-
-}*/
 
 sf::FloatRect Ladrillo:: getBounds()const{
     return _ladrillo.getGlobalBounds();
@@ -30,7 +22,7 @@ sf::FloatRect Ladrillo:: getBounds()const{
 
 void Ladrillo::roto(){
     _canal.play();
-    ladrillo_roto=true;
+    ladrillo_roto = true;
 }
 
 void Ladrillo::position(int i){
