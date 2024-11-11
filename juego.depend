@@ -8518,7 +8518,6 @@
 	<iostream>
 	"Collisionable.h"
 
-1731187621 source:c:\users\asus\desktop\charlie y la fabrica\src\ladrillo.cpp
 	<iostream>
 	"Ladrillo.h"
 
@@ -8550,7 +8549,6 @@
 
 1731186955 c:\users\asus\desktop\charlie y la fabrica\include\puntaje.h
 
-1731189870 source:c:\users\asus\desktop\charlie y la fabrica\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML\Audio.hpp>
 	"Pelota.h"
