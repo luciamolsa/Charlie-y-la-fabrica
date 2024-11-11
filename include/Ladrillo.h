@@ -13,7 +13,7 @@ class Ladrillo : public sf:: Drawable, public Collisionable
         sf::FloatRect getBounds()const override;
         void roto();
         void position(int);
-        void desapear();
+        void disapear();
 
 
     protected:

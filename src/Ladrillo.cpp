@@ -55,7 +55,7 @@ void Ladrillo::position(int i){
 	}
 }
 
-void Ladrillo::desapear(){ // no desaparecen sino que se dibujan fuera de la pantalla
+void Ladrillo::disapear(){ // no desaparecen sino que se dibujan fuera de la pantalla
 	_ladrillo.setPosition(-1500, -1500);
 }
 

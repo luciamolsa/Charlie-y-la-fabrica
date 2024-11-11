@@ -18,7 +18,7 @@ public:
 	sf::FloatRect getBounds() const override;
 	void Base(float);
 	void increaseSpeed(int);
-	void multiply();
+	//void createBall();
 
 private:
 

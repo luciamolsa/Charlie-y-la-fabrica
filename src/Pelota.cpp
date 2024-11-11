@@ -43,12 +43,14 @@ bool Pelota::update(){
     return true;
 
 }
+
 void Pelota::bounce(){
 
     _velocity.y = -_velocity.y;
     _sound.play();
 
 }
+
 void Pelota::respawn(){
 
     _sprite.setPosition(350,530);
@@ -85,14 +87,8 @@ void Pelota::Base(float v){
 }
 
 void Pelota::increaseSpeed(int n){
-	n = n*0.7;
+	n = n*0.5;
 	_velocity = {n,n};
-}
-
-void Pelota::multiply() {
-
-    _velocity.y = -_velocity.y;
-    _sound.play(); // Sonido al crear pelotas
 }
 
 Pelota::~Pelota()

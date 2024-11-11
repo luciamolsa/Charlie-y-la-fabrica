@@ -30,8 +30,8 @@ int main()
 		musica.setLoop(true);
 		musica.play();
 
-		Menu m;
-		int page_number;
+		Menu menu;
+		int option;
 
 		//Game Loop
 		while (window.isOpen()) {
@@ -49,29 +49,29 @@ int main()
 				if (event.type == sf::Event::KeyReleased){
 
 					if (event.key.code == sf::Keyboard::Up) {
-						m.moveUp();
+						menu.moveUp();
 						break;
 					}
 					if (event.key.code == sf::Keyboard::Down) {
-						m.moveDown();
+						menu.moveDown();
 						break;
 					}
 					// elegir opcion
 					if (event.key.code == sf::Keyboard::Return) { // enter
-						int x = m.mainMenuPressed();
+						int x = menu.mainMenuPressed();
 
 						switch (x){
 						case 0:
 							window.close();
-							page_number = 0;
+							option = 0;
 							break;
 						case 1:
 							window.close();
-							page_number = 1;
+							option = 1;
 							break;
 						case 2:
 							window.close();
-							page_number = 2;
+							option = 2;
 							break;
 
 						}
@@ -84,12 +84,12 @@ int main()
 
 			window.clear();
 			window.draw(imag);
-			m.Draw(window);
+			menu.Draw(window);
 			window.display();
 
 		}
 
-		switch (page_number){
+		switch (option){
 			case 0: {// jugar
 
 				sf::RenderWindow window_play(sf::VideoMode(1200,  600), "play");
@@ -114,7 +114,6 @@ int main()
 				Ladrillo ladrillo[81];
 				BonusVida bonusvida;
 				Bonus bonus;
-
 
 				int ladrillos = 81;
 				for (int i = 0; i < ladrillos; i++){
@@ -147,7 +146,6 @@ int main()
 				canal1.setBuffer(bastaChicos);
 				canal2.setBuffer(miami);
 
-
 				while (window_play.isOpen()){
 					sf::Event event;
 
@@ -157,18 +155,19 @@ int main()
 						}
 					}
 
-					if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Space ) ){
+					if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Space)){
 						comienzo = true;
 					}
 
 					if(comienzo){
 						pelota.update();
 						base.update();
+						bonus.update();
 
 						for (int i = 0; i < ladrillos; i++){
 							if(pelota.isCollision(ladrillo[i])){
 								ladrillo[i].roto();
-								ladrillo[i].desapear();
+								ladrillo[i].disapear();
 								pelota.bounce();
 								puntos++;
 								ladrillos_rotos++;
@@ -178,13 +177,15 @@ int main()
 						if(pelota.isCollision(base)){
 							pelota.bounce();
 						}
-						///CUANO SE ROMPA CIERTA CANTIDAD DE LADRILLOS CAIGA.
-                        if (ladrillos_rotos % 5 == 0 && ladrillos_rotos > 0) {
+						///CUANDO SE ROMPA CIERTA CANTIDAD DE LADRILLOS CAIGA.
+                        if (ladrillos_rotos % 5 == 0 && ladrillos_rotos > 0 ||
+                            sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) { //Si se necesita probar el bonus, apretar TAB
                             bonus.activar();
                         }
-                        bonus.update();
-                        if(base.isCollision(bonus)){
-                            pelota.multiply();
+
+                        if(bonus.isCollision(base)){
+                            pelota.increaseSpeed(3);
+                            puntos++;
                         }
 
                         if (bonus.aparece()) {
@@ -197,34 +198,17 @@ int main()
                             bonus.resetPosition();
                         }
 
-   /* ///OTRO BONUS VIDA
-         if (ladrillos_rotos <75){
-            bonusvida.activar();
-         }
-         bonusvida.update();
-          if (bonusvida.aparece()) {
-    if (bonusvida.getBounds().top > 600) {
-        bonusvida.reseteoPosicion();
-    }}
-        if (ladrillos_rotos == ladrillos){
-      bonusvida.reseteoPosicion();
-    }
-    if (b.isCollision(bonusvida)){
-      vida++;
-    }*/
-
-///ERROR
-
 						if(pelota.update() == false && vida > 1){
 							vida--;
 							canal.play();
 							pelota.respawn();
 							base.respawn();
 							comienzo = false;
+							pelota.increaseSpeed(2);
 						}
 
 						if(pelota.update() == false && vida == 1){
-							vida=0;
+							vida = 0;
 							pmax.leerDeDisco();
 							if (puntos > pmax.getPuntaje()){
 								pmax.setPuntaje(puntos);
@@ -247,9 +231,8 @@ int main()
 							vida = 3; // se restauran las 3 vidas
 							pelota.respawn();
 							base.respawn();
-							comienzo=false;
-							ladrillos_rotos=0;
-
+							comienzo = false;
+							ladrillos_rotos = 0;
 
 							for (int i = 0; i < ladrillos; i++){
 								ladrillo[i].position(i+1); // vuelven a armarse la pared
@@ -320,7 +303,6 @@ int main()
 				punt.setCharacterSize(50);
 				punt.setPosition(300,300);
 				punt.setColor(sf::Color::Blue);
-
 
 				while (window_p.isOpen()){
 					sf::Event event;
