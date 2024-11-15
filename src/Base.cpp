@@ -64,6 +64,13 @@ float Base::getVelocity(){
 	return _velocity;
 }
 
+void Base::sizeReduce() {
+    _base.scale(0.7f, 1.0f);
+}
+
+void Base::sizeIncrease(){
+    _base.scale(2.0f, 1.0f);
+}
 
 Base::~Base()
 {

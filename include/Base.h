@@ -17,6 +17,8 @@ class Base: public sf:: Drawable, public Collisionable
         sf::FloatRect getBounds()const override;
         void increaseSpeed(int);
 		float getVelocity();
+		void sizeReduce();
+		void sizeIncrease();
 
     private:
 

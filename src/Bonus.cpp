@@ -1,4 +1,5 @@
 #include "Bonus.h"
+#include "Base.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -40,4 +41,29 @@ void Bonus::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
 sf::FloatRect Bonus::getBounds() const {
     return _sprite.getGlobalBounds();
+}
+
+void Bonus::randomBonus(int randomOption, sf::Base& base) {
+    switch (randomOption) {
+        case 1:
+            base.sizeReduce();
+            break;
+
+        case 2:
+            base.sizeIncrease();
+            break;
+
+        case 3:
+
+            break;
+
+        case 4:
+            std::cout << "Bonus: Ralentizar la pelota!" << std::endl;
+            // Implementar lógica para reducir la velocidad de la pelota
+            break;
+
+        default:
+            std::cout << "Opción de bonus no válida." << std::endl;
+            break;
+    }
 }
