@@ -91,8 +91,6 @@ void Pelota::increaseSpeed(int n){
 	_velocity = {n,n};
 }
 
-
-
 Pelota::~Pelota()
 {
     //dtor
