@@ -43,7 +43,7 @@ sf::FloatRect Bonus::getBounds() const {
     return _sprite.getGlobalBounds();
 }
 
-void Bonus::randomBonus(int randomOption, sf::Base& base) {
+/*void Bonus::randomBonus(int randomOption, sf::Base& base) {
     switch (randomOption) {
         case 1:
             base.sizeReduce();
@@ -66,4 +66,4 @@ void Bonus::randomBonus(int randomOption, sf::Base& base) {
             std::cout << "Opción de bonus no válida." << std::endl;
             break;
     }
-}
+}*/

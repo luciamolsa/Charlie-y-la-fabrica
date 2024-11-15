@@ -18,7 +18,7 @@ public:
     void resetPosition();
     void activar();
     bool aparece() const { return _aparece; }
-    void randomBonus(int random, sf::Base& b);
+    //void randomBonus(int random, sf::Base& b);
 };
 
 #endif // BONUS_H_INCLUDED

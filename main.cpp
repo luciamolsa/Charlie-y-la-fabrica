@@ -154,7 +154,6 @@ int main()
                 if (comienzo) {
                     base.update();
                     bonus.update();
-                    // Actualización de todas las pelotas
                     for (int i = 0; i < pelota.size(); i++) {
                         pelota[i].update();
                         if (pelota[i].isCollision(base)) {
@@ -171,18 +170,15 @@ int main()
                             }
                         }
 
-                        // Lógica de reinicio si una pelota sale de la pantalla
                         if (!pelota[i].update() && vida > 1) {
                             vida--;
                             canal.play();
                             pelota[i].respawn();
                             base.respawn();
                             comienzo = false;
-                            pelota[i].increaseSpeed(2);
                         }
                     }
 
-                    // Lógica para el bonus
                     if (ladrillosRotos % 5 == 0 && ladrillosRotos > 0 ||
                         sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) {
                         bonus.activar();
@@ -239,7 +235,7 @@ int main()
                             ladrillo[i].position(i + 1);
                         }
                     }
-                } else {
+                } else { //Se dibuja base con pelota juntas
                     pelota[0].Base(base.getVelocity());
                     base.update();
                 }

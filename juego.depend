@@ -8394,7 +8394,7 @@
 	<cstdlib>
 	<ctime>
 
-1731639774 c:\users\asus\desktop\charlie y la fabrica\include\bonus.h
+1731640098 c:\users\asus\desktop\charlie y la fabrica\include\bonus.h
 	<SFML\Graphics.hpp>
 	<SFML\Audio.hpp>
 	"Collisionable.h"
@@ -8563,7 +8563,7 @@
 	<iostream>
 	"Ladrillo.h"
 
-1731638664 source:c:\users\asus\desktop\charlie y la fabrica\main.cpp
+1731640098 source:c:\users\asus\desktop\charlie y la fabrica\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML\Audio.hpp>
 	"Pelota.h"
