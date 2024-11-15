@@ -170,10 +170,11 @@ int main()
                             }
                         }
 
-                        if (!pelota[i].update() && vida > 1) {
+                        if (pelota.size() < 2 && !pelota[i].update() && vida > 1) {
                             vida--;
                             canal.play();
                             pelota[i].respawn();
+                            pelota[i].increaseSpeed(4);
                             base.respawn();
                             comienzo = false;
                         }
@@ -195,8 +196,8 @@ int main()
                         bonusTimer.restart();
                         pelota.push_back(p);
                         pelota.push_back(p);
-                        pelota[1].update();
-                        pelota[2].update();
+                        pelota[1].increaseSpeed(4);
+                        pelota[2].increaseSpeed(4);
                         puntos *= 2;
                     }
 
@@ -235,7 +236,7 @@ int main()
                             ladrillo[i].position(i + 1);
                         }
                     }
-                } else { //Se dibuja base con pelota juntas
+                } else {
                     pelota[0].Base(base.getVelocity());
                     base.update();
                 }

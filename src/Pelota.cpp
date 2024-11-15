@@ -87,7 +87,7 @@ void Pelota::Base(float v){
 }
 
 void Pelota::increaseSpeed(int n){
-	n = n*0.5;
+	n = n*0.7;
 	_velocity = {n,n};
 }
 
