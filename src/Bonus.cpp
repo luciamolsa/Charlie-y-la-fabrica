@@ -43,7 +43,7 @@ sf::FloatRect Bonus::getBounds() const {
     return _sprite.getGlobalBounds();
 }
 
-/*void Bonus::randomBonus(int randomOption, sf::Base& base) {
+void Bonus::randomBonus(int randomOption, Base& base, std::vector<Pelota>& pelotas) {
     switch (randomOption) {
         case 1:
             base.sizeReduce();
@@ -54,16 +54,19 @@ sf::FloatRect Bonus::getBounds() const {
             break;
 
         case 3:
+            if (!pelotas.empty()) {
+                std::vector<Pelota> nuevasPelotas = pelotas[0].multiply();
+
+                pelotas.insert(pelotas.end(), nuevasPelotas.begin(), nuevasPelotas.end());
+            }
 
             break;
 
         case 4:
-            std::cout << "Bonus: Ralentizar la pelota!" << std::endl;
-            // Implementar lógica para reducir la velocidad de la pelota
             break;
 
         default:
             std::cout << "Opción de bonus no válida." << std::endl;
             break;
     }
-}*/
+}

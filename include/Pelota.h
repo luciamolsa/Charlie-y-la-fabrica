@@ -16,9 +16,9 @@ public:
 	void respawn();
 	void draw(sf::RenderTarget& target,sf::RenderStates states)const override;
 	sf::FloatRect getBounds() const override;
-	void Base(float);
+	void base(float);
 	void increaseSpeed(int);
-	//void createBall();
+	std::vector<Pelota> multiply() const;
 
 private:
 

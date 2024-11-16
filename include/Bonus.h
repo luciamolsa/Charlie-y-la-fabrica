@@ -4,6 +4,7 @@
 #include <SFML\Audio.hpp>
 #include "Collisionable.h"
 #include "Base.h"
+#include "Pelota.h"
 
 class Bonus : public sf::Drawable, public Collisionable {
     sf::Sprite _sprite;
@@ -18,7 +19,7 @@ public:
     void resetPosition();
     void activar();
     bool aparece() const { return _aparece; }
-    //void randomBonus(int random, sf::Base& b);
+    void randomBonus(int random, Base& b, std::vector<Pelota>& pelota);
 };
 
 #endif // BONUS_H_INCLUDED

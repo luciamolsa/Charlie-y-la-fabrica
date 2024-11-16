@@ -67,7 +67,7 @@ sf::FloatRect Pelota::getBounds() const{
     return _sprite.getGlobalBounds();
 }
 
-void Pelota::Base(float v){
+void Pelota::base(float v){
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
         _sprite.move(v, 0);
 
@@ -89,6 +89,14 @@ void Pelota::Base(float v){
 void Pelota::increaseSpeed(int n){
 	n = n*0.7;
 	_velocity = {n,n};
+}
+
+std::vector<Pelota> Pelota::multiply() const {
+    std::vector<Pelota> pelotas;
+    for (int i = 0; i < 3; i++) {
+        pelotas.push_back(*this);
+    }
+    return pelotas;
 }
 
 Pelota::~Pelota()

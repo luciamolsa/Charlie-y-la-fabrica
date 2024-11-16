@@ -6,7 +6,6 @@
 #include "Puntaje.h"
 #include "Menu.h"
 #include "Bonus.h"
-#include "BonusVida.h"
 #include <vector>
 
 void gameover();
@@ -102,7 +101,6 @@ int main()
             pelota.push_back(p);
             Base base;
             Ladrillo ladrillo[81];
-            BonusVida bonusvida;
             Bonus bonus;
 
             int ladrillos = 81;
@@ -154,6 +152,7 @@ int main()
                 if (comienzo) {
                     base.update();
                     bonus.update();
+                    int tipoBonus = 0;
                     for (int i = 0; i < pelota.size(); i++) {
                         pelota[i].update();
                         if (pelota[i].isCollision(base)) {
@@ -194,11 +193,9 @@ int main()
                     if (bonus.isCollision(base)&& !bonusCollisionActive) {
                         bonusCollisionActive = true;
                         bonusTimer.restart();
-                        pelota.push_back(p);
-                        pelota.push_back(p);
-                        pelota[1].increaseSpeed(4);
-                        pelota[2].increaseSpeed(4);
                         puntos *= 2;
+                        int tipoBonus = rand() % 4 + 1;
+                        bonus.randomBonus(tipoBonus, base, pelota);
                     }
 
                     if (bonus.aparece() && bonus.getBounds().top > 600) {
@@ -237,7 +234,7 @@ int main()
                         }
                     }
                 } else {
-                    pelota[0].Base(base.getVelocity());
+                    pelota[0].base(base.getVelocity());
                     base.update();
                 }
 
