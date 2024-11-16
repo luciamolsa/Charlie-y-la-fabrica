@@ -7,10 +7,15 @@
 #include "Pelota.h"
 
 class Bonus : public sf::Drawable, public Collisionable {
+
+private:
     sf::Sprite _sprite;
     sf::Texture _texture;
     float _velocidad;
     bool _aparece;
+    sf::Sound _canal;
+	sf::SoundBuffer _coin;
+
 public:
     Bonus();
     void update();

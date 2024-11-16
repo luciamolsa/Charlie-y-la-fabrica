@@ -3,6 +3,8 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\Audio.hpp>
 #include "Collisionable.h"
+using namespace std;
+
 
 
 class Pelota: public sf:: Drawable, public Collisionable
@@ -18,7 +20,7 @@ public:
 	sf::FloatRect getBounds() const override;
 	void base(float);
 	void increaseSpeed(int);
-	std::vector<Pelota> multiply() const;
+	vector<Pelota> multiply() const;
 
 private:
 

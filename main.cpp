@@ -7,6 +7,7 @@
 #include "Menu.h"
 #include "Bonus.h"
 #include <vector>
+using namespace std;
 
 void gameover();
 
@@ -96,7 +97,7 @@ int main()
             puntMax.setPosition(810, 65);
             level.setPosition(810, 315);
 
-            std::vector<Pelota> pelota;
+            vector<Pelota> pelota;
             Pelota p;
             pelota.push_back(p);
             Base base;
@@ -173,7 +174,6 @@ int main()
                             vida--;
                             canal.play();
                             pelota[i].respawn();
-                            pelota[i].increaseSpeed(4);
                             base.respawn();
                             comienzo = false;
                         }
@@ -196,6 +196,10 @@ int main()
                         puntos *= 2;
                         int tipoBonus = rand() % 4 + 1;
                         bonus.randomBonus(tipoBonus, base, pelota);
+                        for(int i; i < pelota.size(); i++){
+                            pelota[i].update();
+                        }
+                        bonus.update();
                     }
 
                     if (bonus.aparece() && bonus.getBounds().top > 600) {

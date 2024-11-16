@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+using namespace std;
 
 Bonus::Bonus() : _aparece(false) {
     _texture.loadFromFile("Ricky1.png");
@@ -11,6 +12,9 @@ Bonus::Bonus() : _aparece(false) {
 
     srand(static_cast<unsigned>(time(0)));
     resetPosition();
+    _coin.loadFromFile("miami.wav");
+	_canal.setBuffer(_coin);
+	_canal.setVolume(200.f);
 }
 
 void Bonus::activar() {
@@ -43,7 +47,7 @@ sf::FloatRect Bonus::getBounds() const {
     return _sprite.getGlobalBounds();
 }
 
-void Bonus::randomBonus(int randomOption, Base& base, std::vector<Pelota>& pelotas) {
+void Bonus::randomBonus(int randomOption, Base& base, vector<Pelota>& pelotas) {
     switch (randomOption) {
         case 1:
             base.sizeReduce();
@@ -55,7 +59,7 @@ void Bonus::randomBonus(int randomOption, Base& base, std::vector<Pelota>& pelot
 
         case 3:
             if (!pelotas.empty()) {
-                std::vector<Pelota> nuevasPelotas = pelotas[0].multiply();
+                vector<Pelota> nuevasPelotas = pelotas[0].multiply();
 
                 pelotas.insert(pelotas.end(), nuevasPelotas.begin(), nuevasPelotas.end());
                 // Agrega las pelotas necesarias partiendo desde el ppio del vector, insertando los elementos del nuevo vector
@@ -71,7 +75,7 @@ void Bonus::randomBonus(int randomOption, Base& base, std::vector<Pelota>& pelot
             break;
 
         default:
-            std::cout << "Opcion invalida rey." << std::endl;
+            cout << "Opcion invalida rey." << endl;
             break;
     }
 }

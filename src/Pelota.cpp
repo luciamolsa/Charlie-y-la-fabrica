@@ -91,8 +91,8 @@ void Pelota::increaseSpeed(int n){
 	_velocity = {n,n};
 }
 
-std::vector<Pelota> Pelota::multiply() const {
-    std::vector<Pelota> pelotas;
+vector<Pelota> Pelota::multiply() const {
+    vector<Pelota> pelotas;
     for (int i = 0; i < 3; i++) {
         pelotas.push_back(*this);
     }

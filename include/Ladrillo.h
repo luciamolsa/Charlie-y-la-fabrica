@@ -16,7 +16,7 @@ class Ladrillo : public sf:: Drawable, public Collisionable
         void disapear();
 
 
-    protected:
+    private:
         sf::Sprite _ladrillo;
         sf::Texture _texture;
         sf::Sound _canal;
