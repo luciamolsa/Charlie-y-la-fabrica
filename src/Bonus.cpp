@@ -58,15 +58,20 @@ void Bonus::randomBonus(int randomOption, Base& base, std::vector<Pelota>& pelot
                 std::vector<Pelota> nuevasPelotas = pelotas[0].multiply();
 
                 pelotas.insert(pelotas.end(), nuevasPelotas.begin(), nuevasPelotas.end());
+                // Agrega las pelotas necesarias partiendo desde el ppio del vector, insertando los elementos del nuevo vector
             }
 
             break;
 
         case 4:
+            //for each -> es un for de cada elemento del vector :)
+            for (Pelota& pelota : pelotas) {
+                pelota.increaseSpeed(2);
+            }
             break;
 
         default:
-            std::cout << "Opción de bonus no válida." << std::endl;
+            std::cout << "Opcion invalida rey." << std::endl;
             break;
     }
 }
