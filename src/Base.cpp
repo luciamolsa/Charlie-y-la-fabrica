@@ -28,10 +28,6 @@ void Base::update(){
         _base.setPosition(_base.getOrigin().x+10,_base.getPosition().y);
     }
 
-    /*if(_base.getPosition().x - _base.getGlobalBounds().width < 10){
-        _base.setPosition(10 + _base.getGlobalBounds().width,_base.getPosition().y);
-    }*/
-
     if(_base.getPosition().x + _base.getGlobalBounds().width > 840){
         _base.setPosition(840 - _base.getGlobalBounds().width,_base.getPosition().y);
     }
@@ -55,7 +51,7 @@ sf::FloatRect Base:: getBounds()const{
 
 }
 
-void Base::aumentarVelocidad(int n){
+void Base::increaseSpeed(int n){
 	n=4+n*0.2;
 	_velocity=n;
 }
@@ -64,6 +60,22 @@ float Base::getVelocity(){
 	return _velocity;
 }
 
+void Base::sizeReduce() {
+    _base.scale(0.7f, 1.0f);
+}
+
+void Base::sizeIncrease(){
+    _base.scale(2.0f, 1.0f);//Agrandar
+    if(_base.getPosition().x + _base.getGlobalBounds().width > 500){
+        _base.setPosition(500 - _base.getGlobalBounds().width,_base.getPosition().y);
+    }
+}
+
+/*void Base:: shoot(Bullet& bullet){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Shift)){
+        //debe aparecer bullet
+    }
+}*/
 
 Base::~Base()
 {

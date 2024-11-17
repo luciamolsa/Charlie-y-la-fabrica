@@ -9,7 +9,7 @@ Pelota::Pelota(){
     _sprite.setTexture(_texture);
     _sprite.setPosition(350,530);
 
-    _velocity={1,1};
+    _velocity = {1,1};
 
     _buffer.loadFromFile("Rebote.wav");
     _sound.setBuffer(_buffer);
@@ -43,20 +43,19 @@ bool Pelota::update(){
     return true;
 
 }
-void Pelota::rebote(){
+
+void Pelota::bounce(){
 
     _velocity.y = -_velocity.y;
     _sound.play();
 
 }
+
 void Pelota::respawn(){
 
     _sprite.setPosition(350,530);
 
 }
-
-//void Pelota::cmd(){}
-
 
 void Pelota::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 
@@ -68,7 +67,7 @@ sf::FloatRect Pelota::getBounds() const{
     return _sprite.getGlobalBounds();
 }
 
-void Pelota::Base(float v){
+void Pelota::base(float v){
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
         _sprite.move(v, 0);
 
@@ -87,11 +86,18 @@ void Pelota::Base(float v){
     }
 }
 
-void Pelota::aumentarVelocidad(int n){
-	n=n*0.7;
-	_velocity={n,n};
+void Pelota::increaseSpeed(int n){
+	n = n*0.7;
+	_velocity = {n,n};
 }
 
+vector<Pelota> Pelota::multiply() const {
+    vector<Pelota> pelotas;
+    for (int i = 0; i < 3; i++) {
+        pelotas.push_back(*this);
+    }
+    return pelotas;
+}
 
 Pelota::~Pelota()
 {

@@ -52,7 +52,6 @@
 		</Linker>
 		<Unit filename="include/Base.h" />
 		<Unit filename="include/Bonus.h" />
-		<Unit filename="include/BonusVida.h" />
 		<Unit filename="include/Collisionable.h" />
 		<Unit filename="include/Ladrillo.h" />
 		<Unit filename="include/Menu.h" />
@@ -61,7 +60,6 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Base.cpp" />
 		<Unit filename="src/Bonus.cpp" />
-		<Unit filename="src/BonusVida.cpp" />
 		<Unit filename="src/Collisionable.cpp" />
 		<Unit filename="src/Ladrillo.cpp" />
 		<Unit filename="src/Menu.cpp" />
