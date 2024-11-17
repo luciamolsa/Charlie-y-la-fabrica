@@ -24,7 +24,7 @@ int main()
         imag.setTexture(tex);
 
         sf::Music musica;
-        musica.openFromFile("cancion.wav");
+        //musica.openFromFile("cancion.wav");
         musica.setVolume(10);
         musica.setLoop(true);
         musica.play();
@@ -97,17 +97,18 @@ int main()
             puntMax.setPosition(810, 65);
             level.setPosition(810, 315);
 
-            vector<Pelota> pelota;
-            Pelota p;
-            pelota.push_back(p);
+            vector<Pelota> pelotas; //creo al vector pelotas
+            Pelota pelotita; //instancia de la clase Pelota -> p
+            pelotas.push_back(pelotita);
             Base base;
             Ladrillo ladrillo[81];
             Bonus bonus;
 
-            int ladrillos = 81;
-            for (int i = 0; i < ladrillos; i++) {
+            int cantidadLadrillos = 81;
+            for (int i = 0; i < cantidadLadrillos; i++) {
                 ladrillo[i].position(i + 1);
             }
+
             Puntaje pmax;
 
             int puntos = 0;
@@ -154,26 +155,26 @@ int main()
                     base.update();
                     bonus.update();
                     int tipoBonus = 0;
-                    for (int i = 0; i < pelota.size(); i++) {
-                        pelota[i].update();
-                        if (pelota[i].isCollision(base)) {
-                            pelota[i].bounce();
+                    for (int i = 0; i < pelotas.size(); i++) {
+                        pelotas[i].update();
+                        if (pelotas[i].isCollision(base)) {
+                            pelotas[i].bounce();
                         }
 
-                        for (int j = 0; j < ladrillos; j++) {
-                            if (pelota[i].isCollision(ladrillo[j])) {
+                        for (int j = 0; j < cantidadLadrillos; j++) {
+                            if (pelotas[i].isCollision(ladrillo[j])) {
                                 ladrillo[j].roto();
                                 ladrillo[j].disapear();
-                                pelota[i].bounce();
+                                pelotas[i].bounce();
                                 puntos++;
                                 ladrillosRotos++;
                             }
                         }
 
-                        if (pelota.size() < 2 && !pelota[i].update() && vida > 1) {
+                        if (pelotas.size() < 2 && !pelotas[i].update() && vida > 1) {
                             vida--;
                             canal.play();
-                            pelota[i].respawn();
+                            pelotas[i].respawn();
                             base.respawn();
                             comienzo = false;
                         }
@@ -183,6 +184,7 @@ int main()
                         sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) {
                         bonus.activar();
                     }
+
                     if (bonusCollisionActive) {
                         if (bonusTimer.getElapsedTime().asMilliseconds() >= 1) {
                             bonusCollisionActive = false;
@@ -194,23 +196,32 @@ int main()
                         bonusCollisionActive = true;
                         bonusTimer.restart();
                         puntos *= 2;
-                        int tipoBonus = rand() % 4 + 1;
-                        bonus.randomBonus(tipoBonus, base, pelota);
-                        for(int i; i < pelota.size(); i++){
-                            pelota[i].update();
+                        //int tipoBonus = rand() % 4 + 1;
+                        bonus.randomBonus(2, base, pelotas);
+                        for(int i; i < pelotas.size(); i++){
+                            pelotas[i].update();
                         }
                         bonus.update();
+                        //base.update();
                     }
+                    /*for (int j = 0; j < cantidadLadrillos; j++) {
+                            if (bullet.isCollision(ladrillo[j])) {
+                                ladrillo[j].roto();
+                                ladrillo[j].disapear();
+                                puntos++;
+                                ladrillosRotos++;
+                            }
+                        }*/
 
                     if (bonus.aparece() && bonus.getBounds().top > 600) {
                         bonus.resetPosition();
                     }
 
-                    if (ladrillosRotos == ladrillos) {
+                    if (ladrillosRotos == cantidadLadrillos) {
                         bonus.resetPosition();
                     }
 
-                    if (pelota[0].update() == false && vida == 1) {
+                    if (pelotas[0].update() == false && vida == 1) {
                         vida = 0;
                         pmax.leerDeDisco();
                         if (puntos > pmax.getPuntaje()) {
@@ -221,24 +232,24 @@ int main()
                         gameover();
                     }
 
-                    if (ladrillosRotos == ladrillos) {
+                    if (ladrillosRotos == cantidadLadrillos) {
                         canal2.play();
                         nivel++;
-                        pelota[0].increaseSpeed(nivel);
+                        pelotas[0].increaseSpeed(nivel);
                         base.increaseSpeed(nivel);
                         puntos += 10;
                         vida = 3;
-                        pelota[0].respawn();
+                        pelotas[0].respawn();
                         base.respawn();
                         comienzo = false;
                         ladrillosRotos = 0;
 
-                        for (int i = 0; i < ladrillos; i++) {
+                        for (int i = 0; i < cantidadLadrillos; i++) {
                             ladrillo[i].position(i + 1);
                         }
                     }
                 } else {
-                    pelota[0].base(base.getVelocity());
+                    pelotas[0].base(base.getVelocity());
                     base.update();
                 }
 
@@ -251,12 +262,12 @@ int main()
 
                 window_play.clear();
                 window_play.draw(image);
-                for (int i = 0; i < pelota.size(); i++) {
-                    window_play.draw(pelota[i]);
+                for (int i = 0; i < pelotas.size(); i++) {
+                    window_play.draw(pelotas[i]);
                 }
                 window_play.draw(base);
                 window_play.draw(bonus);
-                for (int i = 0; i < ladrillos; i++) {
+                for (int i = 0; i < cantidadLadrillos; i++) {
                     window_play.draw(ladrillo[i]);
                 }
                 window_play.draw(puntaje);
