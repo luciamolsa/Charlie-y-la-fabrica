@@ -1,6 +1,6 @@
 #include<iostream>
-using namespace std;
 #include "Pelota.h"
+using namespace std;
 
 
 Pelota::Pelota(){
@@ -54,7 +54,6 @@ void Pelota::bounce(){
 void Pelota::respawn(){
 
     _sprite.setPosition(350,530);
-
 }
 
 void Pelota::draw(sf::RenderTarget& target, sf::RenderStates states)const {
@@ -62,31 +61,30 @@ void Pelota::draw(sf::RenderTarget& target, sf::RenderStates states)const {
     target.draw(_sprite, states);
 }
 
-sf::FloatRect Pelota::getBounds() const{
+sf::FloatRect Pelota::getBounds() const {
 
     return _sprite.getGlobalBounds();
 }
 
 void Pelota::base(float v){
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         _sprite.move(v, 0);
-
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		_sprite.move(-v, 0);
     }
-    if(_sprite.getPosition().x + _sprite.getGlobalBounds().width > 750){
+
+    if(_sprite.getPosition().x + _sprite.getGlobalBounds().width > 750) {
         _sprite.setPosition(750 - _sprite.getGlobalBounds().width,_sprite.getPosition().y);
     }
-	/*if(_sprite.getPosition().x - _sprite.getGlobalBounds().width < 30){
-        _sprite.setPosition(30 + _sprite.getGlobalBounds().width,_sprite.getPosition().y);
-    }*/
-    if(_sprite.getGlobalBounds().left < 50){
+
+    if(_sprite.getGlobalBounds().left < 50) {
         _sprite.setPosition(_sprite.getOrigin().x+50,_sprite.getPosition().y);
     }
 }
 
-void Pelota::increaseSpeed(int n){
+void Pelota::increaseSpeed(int n) {
 	n = n*0.7;
 	_velocity = {n,n};
 }

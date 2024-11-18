@@ -3,7 +3,6 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\Audio.hpp>
 #include "Collisionable.h"
-#include<list>
 
 class Ladrillo : public sf:: Drawable, public Collisionable
 {

@@ -97,12 +97,13 @@ int main()
             puntMax.setPosition(810, 65);
             level.setPosition(810, 315);
 
-            vector<Pelota> pelotas; //creo al vector pelotas
-            Pelota pelotita; //instancia de la clase Pelota -> p
+            vector<Pelota> pelotas;
+            Pelota pelotita;
             pelotas.push_back(pelotita);
             Base base;
             Ladrillo ladrillo[81];
             Bonus bonus;
+            Bullet bullet;
 
             int cantidadLadrillos = 81;
             for (int i = 0; i < cantidadLadrillos; i++) {
@@ -171,7 +172,7 @@ int main()
                             }
                         }
 
-                        if (pelotas.size() < 2 && !pelotas[i].update() && vida > 1) {
+                        if (pelotas.size() == 1 && !pelotas[i].update() && vida > 1) {
                             vida--;
                             canal.play();
                             pelotas[i].respawn();
@@ -196,22 +197,25 @@ int main()
                         bonusCollisionActive = true;
                         bonusTimer.restart();
                         puntos *= 2;
-                        //int tipoBonus = rand() % 4 + 1;
-                        bonus.randomBonus(2, base, pelotas);
+                        int tipoBonus = rand() % 4 + 1;
+                        bonus.randomBonus(tipoBonus, base, pelotas);
                         for(int i; i < pelotas.size(); i++){
                             pelotas[i].update();
                         }
                         bonus.update();
-                        //base.update();
+                        base.update();
                     }
-                    /*for (int j = 0; j < cantidadLadrillos; j++) {
-                            if (bullet.isCollision(ladrillo[j])) {
+                    for (auto& bala : base.getBalas()) {
+                        bullet.update();
+                        for (int j = 0; j < cantidadLadrillos; j++) {
+                            if (bala.getBounds().intersects(ladrillo[j].getBounds())) {
                                 ladrillo[j].roto();
                                 ladrillo[j].disapear();
                                 puntos++;
                                 ladrillosRotos++;
                             }
-                        }*/
+                        }
+                    }
 
                     if (bonus.aparece() && bonus.getBounds().top > 600) {
                         bonus.resetPosition();
@@ -270,6 +274,7 @@ int main()
                 for (int i = 0; i < cantidadLadrillos; i++) {
                     window_play.draw(ladrillo[i]);
                 }
+                window_play.draw(bullet);
                 window_play.draw(puntaje);
                 window_play.draw(vidas);
                 window_play.draw(puntMax);
