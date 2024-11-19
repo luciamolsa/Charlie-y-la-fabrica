@@ -1,15 +1,20 @@
 #include "GamePlay.h"
+#include <SFML/Graphics.hpp>
+#include <SFML\Audio.hpp>
+#include "Pelota.h"
+#include "Base.h"
+#include "Ladrillo.h"
+#include "Puntaje.h"
+#include "Menu.h"
+#include "Bonus.h"
+#include <vector>
 using namespace std;
 
-void gameover();
+Gameplay::Gameplay(){
+}
 
-int main()
-{
-   Gameplay gameplay;
-
-   gameplay.init();
-
-   /* while (true) {
+void Gameplay::init(){
+       while (true) {
         // Inicializo ventana
         sf::RenderWindow window(sf::VideoMode(600, 600), "menu");
         window.setFramerateLimit(80);
@@ -34,7 +39,7 @@ int main()
             while (window.pollEvent(event)) {
                 if (event.type == sf::Event::Closed) {
                     window.close();
-                    return 0;
+                    return ;
                 }
                 if (event.type == sf::Event::KeyReleased) {
                     if (event.key.code == sf::Keyboard::Up) {
@@ -64,7 +69,7 @@ int main()
                     }
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-                    return 0;
+                    return ;
                 }
             }
 
@@ -258,8 +263,8 @@ int main()
 
                 puntaje.setString(" Puntaje:  " + std::to_string(puntos));
                 vidas.setString(" Vidas:  " + std::to_string(vida));
-                puntMax.setString(" Puntaje Maximo:  " + std::to_string(nivel));
-                level.setString("  Nivel:   " + std::to_string(pmax.getPuntaje()));
+                puntMax.setString(" Puntaje Maximo:  " + std::to_string(pmax.getPuntaje()));
+                level.setString("  Nivel:   " + std::to_string(nivel));
 
                 window_play.clear();
                 window_play.draw(image);
@@ -282,7 +287,7 @@ int main()
                     if (puntos > pmax.getPuntaje()) {
                         pmax.setPuntaje(puntos);
                         pmax.grabarEnDisco();
-                    } ///SOLO GUARDA CUANDO TERMINA EL NIVEL NO CUANDO SE CIERRA LA CON x
+                    }*/ ///SOLO GUARDA CUANDO TERMINA EL NIVEL NO CUANDO SE CIERRA LA CON x
 
                     window_play.close();
                 }
@@ -337,13 +342,14 @@ int main()
             break;
         }
         case 2: { // Salir
-            return 0;
-        }
-        }*/
-    }
 
-void gameover() {
-    /*sf::RenderWindow window(sf::VideoMode(600, 600), "gameover", sf::Style::Close);
+        }
+        }
+    }
+}
+
+void Gameplay::gameover(){
+sf::RenderWindow window(sf::VideoMode(600, 600), "gameover", sf::Style::Close);
     sf::Sprite imag;
     sf::Texture tex;
     tex.loadFromFile("game-over.png");
@@ -359,5 +365,8 @@ void gameover() {
         window.clear();
         window.draw(imag);
         window.display();
-    }*/
+    }
+}
+
+ Gameplay::~Gameplay(){
 }

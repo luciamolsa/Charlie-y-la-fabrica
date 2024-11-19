@@ -86,14 +86,16 @@ void Pelota::base(float v){
     }
 }
 
-void Pelota::increaseSpeed(int n){
-	n = n*0.7;
-	_velocity = {n,n};
+void Pelota::increaseSpeed(float n){
+   _velocity.x *= n;    /// Incremento de velocidad en la misma direccion.
+   _velocity.y *= n;     /// Incremento de velocidad en la misma direccion.
+	/*n = n*0.7;
+	_velocity = {n,n};*/
 }
 
 vector<Pelota> Pelota::multiply() const {
     vector<Pelota> pelotas;
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 2; i++) {
         pelotas.push_back(*this);
     }
     return pelotas;

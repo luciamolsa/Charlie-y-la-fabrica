@@ -25,6 +25,7 @@ public:
     void activar();
     bool aparece() const { return _aparece; }
     void randomBonus(int random, Base& b, std::vector<Pelota>& pelota);
+    void desactivar();
 };
 
 #endif // BONUS_H_INCLUDED

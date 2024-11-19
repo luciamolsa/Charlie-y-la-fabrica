@@ -19,7 +19,7 @@ public:
 	void draw(sf::RenderTarget& target,sf::RenderStates states)const override;
 	sf::FloatRect getBounds() const override;
 	void base(float);
-	void increaseSpeed(int);
+	void increaseSpeed(float);
 	vector<Pelota> multiply() const;
 
 private:
