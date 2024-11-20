@@ -24,6 +24,7 @@ public:
     sf::FloatRect getBounds() const override;
     void resetPosition();
     void activar();
+    void desactivar();
     bool aparece() const { return _aparece; }
     void randomBonus(int random, Base& b, vector<Pelota>& pelota);
 };

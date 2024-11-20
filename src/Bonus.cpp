@@ -21,6 +21,11 @@ void Bonus::activar() {
     _aparece = true;
 }
 
+void Bonus::desactivar() {
+   _aparece = false;
+   resetPosition();
+}
+
 void Bonus::update() {
     if (_aparece) {
         _sprite.move(0, 2);
@@ -70,7 +75,7 @@ void Bonus::randomBonus(int randomOption, Base& base, vector<Pelota>& pelotas) {
         case 4:
             //for each -> es un for de cada elemento del vector :)
             for (Pelota& pelota : pelotas) {
-                pelota.increaseSpeed(2);
+                pelota.increaseSpeed(1.1);
             }
             break;
 

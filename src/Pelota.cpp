@@ -67,28 +67,30 @@ sf::FloatRect Pelota::getBounds() const{
     return _sprite.getGlobalBounds();
 }
 
-void Pelota::base(float v){
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+void Pelota::base(float v) {
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         _sprite.move(v, 0);
 
     }
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		_sprite.move(-v, 0);
     }
-    if(_sprite.getPosition().x + _sprite.getGlobalBounds().width > 750){
+
+    if(_sprite.getPosition().x + _sprite.getGlobalBounds().width > 750) {
         _sprite.setPosition(750 - _sprite.getGlobalBounds().width,_sprite.getPosition().y);
     }
-	/*if(_sprite.getPosition().x - _sprite.getGlobalBounds().width < 30){
-        _sprite.setPosition(30 + _sprite.getGlobalBounds().width,_sprite.getPosition().y);
-    }*/
-    if(_sprite.getGlobalBounds().left < 50){
+
+    if(_sprite.getGlobalBounds().left < 50) {
         _sprite.setPosition(_sprite.getOrigin().x+50,_sprite.getPosition().y);
     }
 }
 
-void Pelota::increaseSpeed(int n){
-	n = n*0.7;
-	_velocity = {n,n};
+void Pelota::increaseSpeed(float n) {
+   _velocity.x *= n;    /// Incremento de velocidad en la misma direccion.
+   _velocity.y *= n;     /// Incremento de velocidad en la misma direccion.
+	/*n = n*0.7;
+	_velocity = {n,n};*/
 }
 
 vector<Pelota> Pelota::multiply() const {
