@@ -5,7 +5,6 @@ void gameover();
 
 int main() {
     Gameplay gameplay;
-
     gameplay.init();
 }
 

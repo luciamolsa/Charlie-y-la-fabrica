@@ -7,6 +7,7 @@
 #include "Puntaje.h"
 #include "Menu.h"
 #include "Bonus.h"
+#include "Bullet.h"
 #include <vector>
 using namespace std;
 
@@ -104,7 +105,7 @@ void Gameplay::init(){
             Base base;
             Ladrillo ladrillo[81];
             Bonus bonus;
-
+            Bullet bullet;
             int ladrillos = 81;
             for (int i = 0; i < ladrillos; i++) {
                 ladrillo[i].position(i + 1);
@@ -155,16 +156,16 @@ void Gameplay::init(){
                     base.update();
                     bonus.update();
                     int tipoBonus = 0;
-                    bool conPleotasEnJuego= false;
-                    int posicionParaSacarBola= -1;
+                    bool pelotasActive = false;
+                    int posicionParaSacarBola = -1;
 
                     for (int i = 0; i < pelota.size(); i++) {
 
-                       if( pelota[i].update()){
-                     conPleotasEnJuego= true;
+                       if(pelota[i].update()) {
+                            pelotasActive = true;
                        }
                         else {
-                           posicionParaSacarBola= i;
+                           posicionParaSacarBola = i;
                         }
                         if (pelota[i].isCollision(base)) {
                             pelota[i].bounce();
@@ -180,20 +181,20 @@ void Gameplay::init(){
                                 ladrillosRotos++;
                             }
                         }
-
                     }
 
-                    if(posicionParaSacarBola != -1 && pelota.size()>=2){
-                     pelota.erase(pelota.begin() + posicionParaSacarBola);
+                    if(posicionParaSacarBola != -1 && pelota.size()>=2) {
+                        pelota.erase(pelota.begin() + posicionParaSacarBola);
                     }
-                        if (!conPleotasEnJuego && vida > 1) {
-                            vida--;
-                            canal.play();
-                            pelota[0].respawn();
-                            bonus.desactivar();
-                            base.respawn();
-                            comienzo = false;
-                        }
+
+                    if (!pelotasActive && vida > 1) {
+                        vida--;
+                        canal.play();
+                        pelota[0].respawn();
+                        bonus.desactivar();
+                        base.respawn();
+                        comienzo = false;
+                    }
 
                     if (ladrillosRotos % 5 == 0 && ladrillosRotos > 0 ||
                         sf::Keyboard::isKeyPressed(sf::Keyboard::Tab)) {
@@ -219,6 +220,18 @@ void Gameplay::init(){
                         bonus.update();
                     }
 
+                    for (auto& bala : base.getBalas()) {
+                        bullet.update();
+                        for (int j = 0; j < ladrillos; j++) {
+                            if (bala.getBounds().intersects(ladrillo[j].getBounds())) {
+                                ladrillo[j].roto();
+                                ladrillo[j].disapear();
+                                puntos++;
+                                ladrillosRotos++;
+                            }
+                        }
+                    }
+
                     if (bonus.aparece() && bonus.getBounds().top > 600) {
                         bonus.resetPosition();
                     }
@@ -230,6 +243,7 @@ void Gameplay::init(){
                     if (pelota[0].update() == false && vida == 1) {
                         vida = 0;
                         pmax.leerDeDisco();
+
                         if (puntos > pmax.getPuntaje()) {
                             pmax.setPuntaje(puntos);
                             pmax.grabarEnDisco();
@@ -276,6 +290,7 @@ void Gameplay::init(){
                 for (int i = 0; i < ladrillos; i++) {
                     window_play.draw(ladrillo[i]);
                 }
+                window_play.draw(bullet);
                 window_play.draw(puntaje);
                 window_play.draw(vidas);
                 window_play.draw(puntMax);

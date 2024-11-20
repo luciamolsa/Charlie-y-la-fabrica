@@ -1,16 +1,16 @@
 #include<iostream>
+#include "Base.h"
+#include "Bullet.h"
+#include "Bullet.h"
 using namespace std;
 
-#include "Base.h"
-
-
-
-Base::Base(){
+Base::Base() {
 
     _texture.loadFromFile("base.png");
     _base.setTexture(_texture);
     _base.setPosition(360,550);
     _velocity = 4;
+    _shooterActive = false;
     _base.setOrigin(_base.getLocalBounds().width/2,0);
 }
 
@@ -25,13 +25,29 @@ void Base::update() {
 		_base.move(-_velocity,0);
     }
 
-    if(_base.getPosition().x - _base.getLocalBounds().width/2  * _base.getScale().x < 10) {
+    if(_base.getPosition().x - _base.getLocalBounds().width/2  * _base.getScale().x < 10){
+
         _base.setPosition(_base.getLocalBounds().width/2 * _base.getScale().x +10 ,_base.getPosition().y);
     }
 
-    if(_base.getPosition().x + _base.getLocalBounds().width/2  * _base.getScale().x > 790) {
+    if(_base.getPosition().x + _base.getLocalBounds().width/2  * _base.getScale().x > 790){
         _base.setPosition(790 -_base.getLocalBounds().width/2 * _base.getScale().x , _base.getPosition().y);
     }
+
+    if (_shooterActive && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)) {
+        Bullet bala;
+        bala.respawn(_base);
+        _balas.push_back(bala);
+    }
+
+    for (auto it = _balas.begin(); it != _balas.end();) {
+        if (!it->update()) {
+            it = _balas.erase(it);
+        } else {
+            ++it;
+        }
+    }
+
 }
 
 void Base:: respawn() {
@@ -41,6 +57,10 @@ void Base:: respawn() {
 
 void Base::draw(sf::RenderTarget& target, sf::RenderStates states)const {
     target.draw(_base, states);
+
+    for (const auto& bala : _balas) {
+        target.draw(bala, states);
+    }
 }
 
 sf::FloatRect Base:: getBounds()const {
@@ -64,11 +84,16 @@ void Base::sizeReduce() {
 }
 
 void Base::sizeIncrease() {
-    _base.scale(2.0f, 1.0f);
+    _base.setScale(2.0f, 1.0f);
+    _base.setOrigin(_base.getLocalBounds().width/2,0);
+}
 
-    if(_base.getPosition().x + _base.getGlobalBounds().width > 500){
-        _base.setPosition(500 - _base.getGlobalBounds().width,_base.getPosition().y);
-    }
+void Base::activateShoot() {
+    _shooterActive = true;
+}
+
+const vector<Bullet>& Base::getBalas() {
+    return _balas;
 }
 
 Base::~Base()

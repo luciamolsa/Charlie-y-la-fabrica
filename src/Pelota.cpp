@@ -1,6 +1,6 @@
 #include<iostream>
-using namespace std;
 #include "Pelota.h"
+using namespace std;
 
 
 Pelota::Pelota(){
@@ -54,7 +54,6 @@ void Pelota::bounce(){
 void Pelota::respawn(){
 
     _sprite.setPosition(350,530);
-
 }
 
 void Pelota::draw(sf::RenderTarget& target, sf::RenderStates states)const {
@@ -62,15 +61,15 @@ void Pelota::draw(sf::RenderTarget& target, sf::RenderStates states)const {
     target.draw(_sprite, states);
 }
 
-sf::FloatRect Pelota::getBounds() const{
+sf::FloatRect Pelota::getBounds() const {
 
     return _sprite.getGlobalBounds();
 }
 
 void Pelota::base(float v) {
+
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         _sprite.move(v, 0);
-
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {

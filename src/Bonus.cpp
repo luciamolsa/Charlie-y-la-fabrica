@@ -67,16 +67,17 @@ void Bonus::randomBonus(int randomOption, Base& base, vector<Pelota>& pelotas) {
                 vector<Pelota> nuevasPelotas = pelotas[0].multiply();
 
                 pelotas.insert(pelotas.end(), nuevasPelotas.begin(), nuevasPelotas.end());
-                // Agrega las pelotas necesarias partiendo desde el ppio del vector, insertando los elementos del nuevo vector
             }
 
             break;
 
         case 4:
-            //for each -> es un for de cada elemento del vector :)
             for (Pelota& pelota : pelotas) {
                 pelota.increaseSpeed(1.1);
             }
+            break;
+        case 5:
+            base.activateShoot();
             break;
 
         default:

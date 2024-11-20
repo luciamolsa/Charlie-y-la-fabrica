@@ -1,6 +1,6 @@
 #include<iostream>
-using namespace std;
 #include "Ladrillo.h"
+using namespace std;
 
 Ladrillo::Ladrillo()
 {

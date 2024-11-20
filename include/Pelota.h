@@ -5,8 +5,6 @@
 #include "Collisionable.h"
 using namespace std;
 
-
-
 class Pelota: public sf:: Drawable, public Collisionable
 {
 
