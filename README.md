@@ -21,7 +21,7 @@ Un juego clásico inspirado en el famoso **Arkanoid**, desarrollado en **C++** u
 
 1. **Clona el repositorio**:
     ```bash
-    git clone https://github.com/tu_usuario/arkanoid-comico.git
+    git clone https://github.com/luciamolsa/Charlie-y-la-fabrica.git
     ```
 
 2. **Instala las dependencias**: Asegúrate de tener la librería **SFML** instalada en tu sistema. En **Ubuntu**, por ejemplo, puedes instalarla con el siguiente comando:
@@ -32,7 +32,7 @@ Un juego clásico inspirado en el famoso **Arkanoid**, desarrollado en **C++** u
 
 3. **Compilación**:
     ```bash
-    cd arkanoid-comico
+    cd Charlie-y-la-fabrica
     g++ -std=c++11 -o arkanoid main.cpp -lsfml-graphics -lsfml-window -lsfml-system
     ```
 

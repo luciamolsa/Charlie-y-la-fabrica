@@ -54,6 +54,7 @@
 		<Unit filename="include/Bonus.h" />
 		<Unit filename="include/Bullet.h" />
 		<Unit filename="include/Collisionable.h" />
+		<Unit filename="include/GamePlay.h" />
 		<Unit filename="include/Ladrillo.h" />
 		<Unit filename="include/Menu.h" />
 		<Unit filename="include/Pelota.h" />
@@ -63,6 +64,7 @@
 		<Unit filename="src/Bonus.cpp" />
 		<Unit filename="src/Bullet.cpp" />
 		<Unit filename="src/Collisionable.cpp" />
+		<Unit filename="src/GamePlay.cpp" />
 		<Unit filename="src/Ladrillo.cpp" />
 		<Unit filename="src/Menu.cpp" />
 		<Unit filename="src/Pelota.cpp" />
