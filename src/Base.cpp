@@ -11,7 +11,7 @@ Base::Base(){
     _base.setTexture(_texture);
     _base.setPosition(360,550);
     _velocity = 4;
-    _base.setOrigin(_base.getGlobalBounds().width/2,0);
+    _base.setOrigin(_base.getLocalBounds().width/2,0);
 }
 
 void Base::update(){
@@ -24,17 +24,20 @@ void Base::update(){
 		_base.move(-_velocity,0);
     }
 
-    if(_base.getGlobalBounds().left < 10){
-        _base.setPosition(_base.getOrigin().x+10,_base.getPosition().y);
+    if(_base.getPosition().x - _base.getLocalBounds().width/2  * _base.getScale().x < 10){
+
+        _base.setPosition(_base.getLocalBounds().width/2 * _base.getScale().x +10 ,_base.getPosition().y);
     }
 
-    if(_base.getPosition().x + _base.getGlobalBounds().width > 840){
-        _base.setPosition(840 - _base.getGlobalBounds().width,_base.getPosition().y);
+
+    if(_base.getPosition().x + _base.getLocalBounds().width/2  * _base.getScale().x > 790){
+        _base.setPosition(790 -_base.getLocalBounds().width/2 * _base.getScale().x , _base.getPosition().y);
     }
 
 }
 void Base:: respawn(){
 
+    _base.setScale(1.0f,1.0f);
     _base.setPosition(360,550);
 
 }
@@ -61,21 +64,16 @@ float Base::getVelocity(){
 }
 
 void Base::sizeReduce() {
-    _base.scale(0.7f, 1.0f);
+    _base.setScale(0.7f, 1.0f);
+   _base.setOrigin(_base.getLocalBounds().width/2,0);
+
 }
 
 void Base::sizeIncrease(){
-    _base.scale(2.0f, 1.0f);//Agrandar
-    if(_base.getPosition().x + _base.getGlobalBounds().width > 500){
-        _base.setPosition(500 - _base.getGlobalBounds().width,_base.getPosition().y);
-    }
-}
+    _base.setScale(2.0f, 1.0f);
+   _base.setOrigin(_base.getLocalBounds().width/2,0);
 
-/*void Base:: shoot(Bullet& bullet){
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Shift)){
-        //debe aparecer bullet
-    }
-}*/
+}
 
 Base::~Base()
 {

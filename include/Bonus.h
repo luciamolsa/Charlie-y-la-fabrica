@@ -5,7 +5,6 @@
 #include "Collisionable.h"
 #include "Base.h"
 #include "Pelota.h"
-using namespace std;
 
 class Bonus : public sf::Drawable, public Collisionable {
 
@@ -25,7 +24,8 @@ public:
     void resetPosition();
     void activar();
     bool aparece() const { return _aparece; }
-    void randomBonus(int random, Base& b, vector<Pelota>& pelota);
+    void randomBonus(int random, Base& b, std::vector<Pelota>& pelota);
+    void desactivar();
 };
 
 #endif // BONUS_H_INCLUDED
