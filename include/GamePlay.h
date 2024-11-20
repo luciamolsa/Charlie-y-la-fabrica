@@ -9,8 +9,6 @@ class Gameplay{
          Gameplay();
          void init ();
 
-
-
          ~Gameplay();
 };
 
