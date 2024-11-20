@@ -25,7 +25,7 @@ void Gameplay::init(){
         imag.setTexture(tex);
 
         sf::Music musica;
-        //musica.openFromFile("cancion.wav");
+        musica.openFromFile("cancion.wav");
         musica.setVolume(10);
         musica.setLoop(true);
         musica.play();
